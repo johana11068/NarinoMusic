@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "607407400424",
+    "firebase_url": "https://narinomusic.firebaseio.com",
+    "project_id": "narinomusic",
+    "storage_bucket": "narinomusic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607407400424:android:fc03e5e2f5d74681",
+        "android_client_info": {
+          "package_name": "johanar.narinomusic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607407400424-bk76tv2rq3itrguajqq0n0tupc7vqp84.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "johanar.narinomusic",
+            "certificate_hash": "d593ead5a13f5c5a5f8c33c664444251007ef27a"
+          }
+        },
+        {
+          "client_id": "607407400424-huv3svcgndesn4s9vmp8g7tt8ufpnflu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGcXA3mXfOCRkHS3FrceN77q-gJaeKXPY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607407400424-huv3svcgndesn4s9vmp8g7tt8ufpnflu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

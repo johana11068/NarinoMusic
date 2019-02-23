@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">NariñoMusic</string>
+    <string name="pass_hint">Contraseña...</string>
+    <string name="email_hint">Tu correo electrónico...</string>
+    <string name="login_logo_desc">Logo Login Page</string>
+    <string name="login_btn_text">Iniciar Sesión</string>
+    <string name="login_reg_btn_text">¿Necesita una nueva cuenta?</string>
+    <string name="action_search_text">Buscar</string>
+    <string name="action_setting_text">Configuraciones de la cuenta</string>
+    <string name="action_logout_text">Cerrar sesión</string>
+    <string name="reg_btn_text">Crear una nueva cuenta</string>
+    <string name="reg_login_text">¿Ya tienes una cuenta?</string>
+    <string name="reg_pass_text">Contraseña...</string>
+    <string name="reg_confirm_pass_text">Confirmar contraseña...</string>
+    <string name="setup_name_hint">Tu nombre...</string>
+    <string name="setup_save_btn">Guardar configuración de cuenta</string>
+    <string name="setup_name_hint_text">Tu nombre ...</string>
+    <string name="setup_btn_name_text">Guardar configuración de cuenta</string>
+    <string name="post_desc_hint">Agregar descripción ...</string>
+    <string name="new_post_btn_hint">Publicar blog</string>
+    <string name="bottom_home_text">Home</string>
+    <string name="bottom_notification_text">Notificación</string>
+    <string name="bottom_ac_text">Cuenta</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
