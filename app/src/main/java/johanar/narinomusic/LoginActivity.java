@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    private SignInButton mGoogleBtn;
+    //private SignInButton mGoogleBtn;
     private GoogleSignInClient mGoogleSignInClient;
 
     private ProgressBar loginProgress;
@@ -56,8 +56,18 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.login_btn);
         loginRegBtn = findViewById(R.id.login_reg_btn);
         loginProgress = findViewById(R.id.login_progress);
-
+/*
         //********************************************************************************************************
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/googleBtn"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+        </com.google.android.gms.common.SignInButton>
+
+
         // Configure Google Sign In
         mGoogleBtn = (SignInButton) findViewById(R.id.googleBtn);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -74,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 signIn();
             }
-        });
+        });*/
         //********************************************************************************************************
         loginRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,9 +112,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             if(task.isSuccessful()){
-
                                 sendToMain();
-
                             } else {
                                 //String errorMessage = task.getException().getMessage();
                                 //Toast.makeText(LoginActivity.this, "Error : " + errorMessage, Toast.LENGTH_LONG).show();
@@ -205,24 +213,16 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
         FirebaseUser currentUser = mAuth.getCurrentUser();
-
         if(currentUser != null){
-
             sendToMain();
-
         }
-
-
     }
 
     private void sendToMain() {
-
         Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(mainIntent);
         finish();
-
     }
 
     @Override

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/fondo"
+    android:background="@color/colorFondo"
     tools:context=".LoginActivity">
 
     <LinearLayout
@@ -29,7 +29,7 @@
             android:layout_width="259dp"
             android:layout_height="223dp"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/narinomusic"
+            app:srcCompat="@drawable/logo"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"/>
 
@@ -47,8 +47,6 @@
                 android:ems="10"
                 android:hint="@string/email_hint"
                 android:inputType="textEmailAddress"
-                android:textColor="@color/colorAccent"
-                android:textColorHint="@color/whiteTransparentHalf"
                 android:textSize="18sp" />
         </android.support.design.widget.TextInputLayout>
 
@@ -56,7 +54,7 @@
             android:id="@+id/id_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="50dp">
 
             <EditText
                 android:id="@+id/reg_confirm_pass"
@@ -66,21 +64,18 @@
                 android:ems="10"
                 android:hint="@string/reg_confirm_pass_text"
                 android:inputType="textPassword"
-                android:textColor="@color/colorAccent"
-                android:textColorHint="@color/whiteTransparentHalf"
                 android:textSize="18sp" />
         </android.support.design.widget.TextInputLayout>
-
 
 
         <Button
             android:id="@+id/login_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorButton"
             android:layout_marginBottom="10dp"
-            android:paddingBottom="15dp"
+            android:backgroundTint="@color/colorButton"
             android:paddingTop="15dp"
+            android:paddingBottom="15dp"
             android:text="@string/login_btn_text"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
@@ -90,23 +85,14 @@
             android:id="@+id/login_reg_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorButton"
-            android:text="@string/login_reg_btn_text"
             android:layout_marginBottom="10dp"
-            android:paddingBottom="15dp"
+            android:backgroundTint="@color/colorButton"
             android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="@string/login_reg_btn_text"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            android:textSize="18sp"/>
-
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/googleBtn"
-            android:layout_marginBottom="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-        </com.google.android.gms.common.SignInButton>
+            android:textSize="18sp" />
 
 
 

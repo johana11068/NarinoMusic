@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
+    android:background="@color/colorFondo"
     tools:context=".RegisterActivity"
     tools:layout_editor_absoluteY="25dp"
     android:orientation="vertical">
@@ -30,7 +30,7 @@
             android:layout_width="259dp"
             android:layout_height="223dp"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/narinomusic"
+            app:srcCompat="@drawable/logo"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"/>
 
