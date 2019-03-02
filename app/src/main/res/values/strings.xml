@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">NariñoMusic</string>
     <string name="pass_hint">Contraseña...</string>
-    <string name="email_hint">Tu correo electrónico...</string>
-    <string name="login_logo_desc">Logo Login Page</string>
+    <string name="email_hint">Correo electrónico...</string>
     <string name="login_btn_text">Iniciar Sesión</string>
     <string name="login_reg_btn_text">¿Necesita una nueva cuenta?</string>
     <string name="action_search_text">Buscar</string>
@@ -21,6 +20,8 @@
     <string name="bottom_home_text">Home</string>
     <string name="bottom_notification_text">Notificación</string>
     <string name="bottom_ac_text">Cuenta</string>
+    <string name="reg_artista">Artísta Musical</string>
+    <string name="reg_usuario">Usuario</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
