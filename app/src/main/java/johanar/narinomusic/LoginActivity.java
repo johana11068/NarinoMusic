@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -89,10 +88,8 @@ public class LoginActivity extends AppCompatActivity {
         loginRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent regIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent regIntent = new Intent(LoginActivity.this, TypeUserActivity.class);
                 startActivity(regIntent);
-
             }
         });
 
@@ -100,7 +97,6 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String loginEmail = loginEmailText.getText().toString();
                 final String loginPass = loginPassText.getText().toString();
 
@@ -110,7 +106,6 @@ public class LoginActivity extends AppCompatActivity {
                     mAuth.signInWithEmailAndPassword(loginEmail, loginPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-
                             if(task.isSuccessful()){
                                 sendToMain();
                             } else {
@@ -189,13 +184,9 @@ public class LoginActivity extends AppCompatActivity {
                                         loginPassText.requestFocus();
                                         break;
                                 }
-                                Toast.makeText(getApplicationContext(), "Error: "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
-
-
+                                //Toast.makeText(getApplicationContext(), "Error: "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             }
-
                             loginProgress.setVisibility(View.INVISIBLE);
-
                         }
                     });
 
