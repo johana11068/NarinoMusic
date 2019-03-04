@@ -26,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button reg_btn;
     private Button reg_login_btn;
     private ProgressBar reg_progress;
+    String intenTypeUser;
 
     private FirebaseAuth mAuth;
 
@@ -34,6 +35,9 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        //recibir valor de tipo de usuaio inten
+        intenTypeUser = getIntent().getStringExtra("typeUser");
+        Toast.makeText(RegisterActivity.this, "tipo de usuario: "+intenTypeUser, Toast.LENGTH_LONG).show();
         mAuth = FirebaseAuth.getInstance();
 
         reg_email_field = findViewById(R.id.reg_email);
@@ -46,9 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
         reg_login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 finish();
-
             }
         });
 
@@ -59,17 +61,12 @@ public class RegisterActivity extends AppCompatActivity {
                 String email = reg_email_field.getText().toString();
                 String pass = reg_pass_field.getText().toString();
                 String confirm_pass = reg_confirm_pass_field.getText().toString();
-
                 if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass) & !TextUtils.isEmpty(confirm_pass)){
-
                     if(pass.equals(confirm_pass)){
-
                         reg_progress.setVisibility(View.VISIBLE);
-
                         mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-
                                 if(task.isSuccessful()){
                                     Intent setupIntent = new Intent(RegisterActivity.this, SetupActivity.class);
                                     startActivity(setupIntent);
@@ -89,8 +86,6 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
     @Override
@@ -99,18 +94,13 @@ public class RegisterActivity extends AppCompatActivity {
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-
             sendToMain();
-
         }
-
     }
 
     private void sendToMain() {
-
         Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
         startActivity(mainIntent);
         finish();
-
     }
 }

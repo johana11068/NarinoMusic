@@ -16,4 +16,5 @@
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecundaryText">#757575</color>
     <color name="colorDivider">#BDBDBD</color>
+    <color name="colorHint">#BDBDBD</color>
 </resources>

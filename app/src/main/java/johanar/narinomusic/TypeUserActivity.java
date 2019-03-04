@@ -5,10 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 public class TypeUserActivity extends AppCompatActivity {
 
-    private ImageButton btnArtista, btnUsuario;
+    private ImageView btnArtista, btnUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
