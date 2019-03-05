@@ -44,10 +44,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //recibir valor de tipo de usuaio inten
-        intenTypeUser = getIntent().getStringExtra("typeUser");
-        Toast.makeText(MainActivity.this, "tipo de usuario: "+intenTypeUser, Toast.LENGTH_LONG).show();
-
         mAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
 
@@ -57,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Nariño Music");
 
         if(mAuth.getCurrentUser() != null) {
+            //recibir valor de tipo de usuaio inten
+            intenTypeUser = getIntent().getStringExtra("typeUser");
+            Toast.makeText(MainActivity.this, "tipo de usuario: "+intenTypeUser, Toast.LENGTH_LONG).show();
 
             mainbottomNav = findViewById(R.id.mainBottomNav);
             // FRAGMENTS
@@ -94,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //2 1 1085277078 1 2 3
     @Override
     protected void onStart() {
         super.onStart();

@@ -11,12 +11,13 @@
     <string name="reg_login_text">¿Ya tienes una cuenta?</string>
     <string name="reg_pass_text">Contraseña...</string>
     <string name="reg_confirm_pass_text">Confirmar contraseña...</string>
-    <string name="setup_name_hint">Tu nombre...</string>
+    <string name="setup_name_hint">Nombre completo...</string>
     <string name="setup_save_btn">Guardar configuración de cuenta</string>
-    <string name="setup_name_hint_text">Tu nombre ...</string>
+    <string name="setup_name_hint_text">Nombre...</string>
+    <string name="setup_last_hint_text">Apellido...</string>
     <string name="setup_btn_name_text">Guardar configuración de cuenta</string>
     <string name="post_desc_hint">Agregar descripción ...</string>
-    <string name="new_post_btn_hint">Publicar blog</string>
+    <string name="new_post_btn_hint">Publicar</string>
     <string name="bottom_home_text">Home</string>
     <string name="bottom_notification_text">Notificación</string>
     <string name="bottom_ac_text">Cuenta</string>
@@ -25,4 +26,5 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="setup_date_hint_text">Fecha de nacimiento</string>
 </resources>
