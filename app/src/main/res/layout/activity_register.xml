@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorFondo"
+    android:background="@drawable/banner2"
     tools:context=".RegisterActivity"
     tools:layout_editor_absoluteY="25dp"
     android:orientation="vertical">

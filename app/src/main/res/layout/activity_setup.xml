@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".SetupActivity"
     android:orientation="vertical"
-    android:background="@color/colorFondo">
+    android:background="@drawable/banner2">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/setupToolbar"
@@ -28,7 +28,7 @@
         android:id="@+id/setup_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:background="@drawable/usuario"
+        android:background="@drawable/user"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"/>
 

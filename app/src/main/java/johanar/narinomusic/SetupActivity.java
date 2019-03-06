@@ -71,6 +71,8 @@ public class SetupActivity extends AppCompatActivity {
     private EditText etBirthday;
     Calendar calendario = Calendar.getInstance();
 
+    //typeUser    private String intenTypeUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,7 +125,7 @@ public class SetupActivity extends AppCompatActivity {
                         setupDate.setText(birthday);
 
                         RequestOptions placeholderRequest = new RequestOptions();
-                        placeholderRequest.placeholder(R.drawable.default_image);
+                        placeholderRequest.placeholder(R.drawable.user);
 
                         Glide.with(SetupActivity.this).setDefaultRequestOptions(placeholderRequest).load(image).into(setupImage);
                     }
@@ -221,8 +223,7 @@ public class SetupActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-
-                    Toast.makeText(SetupActivity.this, "Datos actualizados con éxito!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SetupActivity.this, "Datos almacenados con éxito!", Toast.LENGTH_LONG).show();
                     Intent mainIntent = new Intent(SetupActivity.this, MainActivity.class);
                     startActivity(mainIntent);
                     finish();
@@ -245,16 +246,12 @@ public class SetupActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
-
                 mainImageURI = result.getUri();
                 setupImage.setImageURI(mainImageURI);
-
                 isChanged = true;
-
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
             }

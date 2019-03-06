@@ -16,7 +16,13 @@
     <string name="setup_name_hint_text">Nombre...</string>
     <string name="setup_last_hint_text">Apellido...</string>
     <string name="setup_btn_name_text">Guardar configuración de cuenta</string>
-    <string name="post_desc_hint">Agregar descripción ...</string>
+
+    <string name="post_desc_hint">Nombre de la agrupación</string>
+    <string name="post_gen_hint">Género músical</string>
+    <string name="post_lugar_hint">Lugar de residencia</string>
+    <string name="post_costo_hint">Costo por servicio</string>
+    <string name="post_canciones_hint">Canciones interpretadas</string>
+
     <string name="new_post_btn_hint">Publicar</string>
     <string name="bottom_home_text">Home</string>
     <string name="bottom_notification_text">Notificación</string>
