@@ -15,7 +15,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:paddingRight="20dp"
+        android:background="#d8000000">
 
         <ProgressBar
             android:id="@+id/reg_progress"
@@ -23,16 +24,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:indeterminate="true"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:layout_marginTop="10dp"/>
 
         <ImageView
             android:id="@+id/regPageLogo"
-            android:layout_width="259dp"
-            android:layout_height="223dp"
+            android:layout_width="250dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
             app:srcCompat="@drawable/logo"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="30dp"/>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/id_correo"
@@ -48,24 +50,6 @@
                 android:ems="10"
                 android:hint="@string/email_hint"
                 android:inputType="textEmailAddress"
-                android:textColor="@color/colorAccent"
-                android:textSize="18sp" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/id_pass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp">
-
-            <EditText
-                android:id="@+id/reg_confirm_pass"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@android:color/white"
-                android:ems="10"
-                android:hint="@string/reg_confirm_pass_text"
-                android:inputType="textPassword"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
         </android.support.design.widget.TextInputLayout>
@@ -87,12 +71,29 @@
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
         </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/id_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp">
+
+            <EditText
+                android:id="@+id/reg_confirm_pass"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@android:color/white"
+                android:ems="10"
+                android:hint="@string/reg_confirm_pass_text"
+                android:inputType="textPassword"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
+        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/reg_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorButton"
+            android:backgroundTint="@color/colorButtonSecundary"
             android:layout_marginBottom="10dp"
             android:paddingBottom="15dp"
             android:paddingTop="15dp"

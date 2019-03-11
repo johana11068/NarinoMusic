@@ -13,87 +13,120 @@
         android:id="@+id/setupToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@color/colorText">
     </android.support.v7.widget.Toolbar>
 
-    <ProgressBar
-        android:id="@+id/setup_progress"
-        style="?android:attr/progressBarStyleHorizontal"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:visibility="invisible" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="#d8000000">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/setup_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:background="@drawable/user"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"/>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
-
-        <EditText
-            android:id="@+id/setup_name"
+        <ProgressBar
+            android:id="@+id/setup_progress"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/setup_name_hint_text"
-            android:inputType="textPersonName"
-            android:padding="15dp"
-            android:textColor="@color/colorAccent"
-            android:textSize="18sp" />
-    </android.support.design.widget.TextInputLayout>
+            android:indeterminate="true"
+            android:visibility="gone" />
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/setup_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/user" />
 
-        <EditText
-            android:id="@+id/setup_last"
+        <TextView
+            android:id="@+id/setup_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/setup_last_hint_text"
-            android:inputType="textPersonName"
-            android:padding="15dp"
-            android:textColor="@color/colorAccent"
-            android:textSize="18sp" />
-    </android.support.design.widget.TextInputLayout>
+            android:visibility="invisible"/>
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/setup_date"
+            <EditText
+                android:id="@+id/setup_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/white"
+                android:ems="10"
+                android:hint="@string/setup_name_hint_text"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/setup_last"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/white"
+                android:ems="10"
+                android:hint="@string/setup_last_hint_text"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/setup_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/white"
+                android:ems="10"
+                android:hint="@string/setup_date_hint_text"
+                android:inputType="date"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/setup_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/setup_date_hint_text"
-            android:inputType="date"
-            android:padding="15dp"
-            android:textColor="@color/colorAccent"
-            android:textSize="18sp" />
-    </android.support.design.widget.TextInputLayout>
+            android:backgroundTint="@color/colorButtonSecundary"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="@string/reg_btn_text"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"/>
 
-    <Button
-        android:id="@+id/setup_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorButton"
-        android:padding="15dp"
-        android:text="@string/setup_btn_name_text"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:layout_marginTop="20dp"/>
+        <Button
+            android:id="@+id/setup_cancel_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="@color/colorButton"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="@string/reg_login_text"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:onClick="cancel" />
+
+
+
+    </LinearLayout>
+
 
 
 

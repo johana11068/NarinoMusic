@@ -2,6 +2,7 @@ package johanar.narinomusic;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -19,6 +20,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -58,8 +60,9 @@ public class SetupActivity extends AppCompatActivity {
     private boolean isChanged = false;
 
     private EditText setupName, setupLast, setupDate;
-    private Button setupBtn;
+    private Button setupBtn,setupCancelBtn;
     private ProgressBar setupProgress;
+    private TextView setupType;
 
     private StorageReference storageReference;
     private FirebaseAuth firebaseAuth;
@@ -67,11 +70,11 @@ public class SetupActivity extends AppCompatActivity {
 
     private Bitmap compressedImageFile;
 
+    String intenTypeUser;
+
     //fecha de nacimiento
     private EditText etBirthday;
     Calendar calendario = Calendar.getInstance();
-
-    //typeUser    private String intenTypeUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +91,9 @@ public class SetupActivity extends AppCompatActivity {
                         calendario.get(Calendar.DAY_OF_MONTH)).show();
             }
         });//
+        //recibir valor de tipo de usuaio inten
+        intenTypeUser = getIntent().getStringExtra("typeUser");
+        //Toast.makeText(SetupActivity.this, "tipo de usuario: "+intenTypeUser, Toast.LENGTH_LONG).show();
 
         Toolbar setupToolbar = findViewById(R.id.setupToolbar);
         setSupportActionBar(setupToolbar);
@@ -103,12 +109,15 @@ public class SetupActivity extends AppCompatActivity {
         setupName = findViewById(R.id.setup_name);
         setupLast = findViewById(R.id.setup_last);
         setupDate = findViewById(R.id.setup_date);
+        setupType = findViewById(R.id.setup_type);
         setupBtn = findViewById(R.id.setup_btn);
+        setupCancelBtn = findViewById(R.id.setup_cancel_btn);
         setupProgress = findViewById(R.id.setup_progress);
 
         setupProgress.setVisibility(View.VISIBLE);
         setupBtn.setEnabled(false);
 
+        setupType.setText(getIntent().getStringExtra("typeUser"));
         firebaseFirestore.collection("Users").document(user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -118,11 +127,13 @@ public class SetupActivity extends AppCompatActivity {
                         String last = task.getResult().getString("last");
                         String birthday = task.getResult().getString("birthday");
                         String image = task.getResult().getString("image");
+                        String type = task.getResult().getString("type");
 
                         mainImageURI = Uri.parse(image);
                         setupName.setText(name);
                         setupLast.setText(last);
                         setupDate.setText(birthday);
+                        setupType.setText(type);
 
                         RequestOptions placeholderRequest = new RequestOptions();
                         placeholderRequest.placeholder(R.drawable.user);
@@ -138,6 +149,16 @@ public class SetupActivity extends AppCompatActivity {
             }
         });
 
+        setupCancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // falta metodo para borrar o eliminar usuario
+                Intent setupIntentLogin = new Intent(SetupActivity.this, LoginActivity.class);
+                startActivity(setupIntentLogin);
+                finish();
+            }
+        });
+
 
         setupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,6 +166,7 @@ public class SetupActivity extends AppCompatActivity {
                 final String user_name = setupName.getText().toString();
                 final String user_last = setupLast.getText().toString();
                 final String user_birthday = setupDate.getText().toString();
+                final String user_type = setupType.getText().toString();
 
                 if (!TextUtils.isEmpty(user_name) && mainImageURI != null && !TextUtils.isEmpty(user_last) && !TextUtils.isEmpty(user_birthday)) {
                     setupProgress.setVisibility(View.VISIBLE);
@@ -170,7 +192,7 @@ public class SetupActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                                 if (task.isSuccessful()) {
-                                    storeFirestore(task, user_name, user_last,user_birthday);
+                                    storeFirestore(task, user_name, user_last,user_birthday,user_type);
                                 } else {
                                     String error = task.getException().getMessage();
                                     Toast.makeText(SetupActivity.this, "(IMAGE Error) : " + error, Toast.LENGTH_LONG).show();
@@ -181,7 +203,7 @@ public class SetupActivity extends AppCompatActivity {
                         });
 
                     } else {
-                        storeFirestore(null, user_name, user_last,user_birthday);
+                        storeFirestore(null, user_name,user_last,user_birthday,user_type);
                     }
                 }else{
                     Toast.makeText(SetupActivity.this, "Todos los campos son requeridos", Toast.LENGTH_LONG).show();
@@ -206,7 +228,7 @@ public class SetupActivity extends AppCompatActivity {
         });
     }
 
-    private void storeFirestore(@NonNull Task<UploadTask.TaskSnapshot> task, String user_name , String user_last, String user_birthday) {
+    private void storeFirestore(@NonNull Task<UploadTask.TaskSnapshot> task, String user_name , String user_last, String user_birthday, final String user_type) {
         Uri download_uri;
         if(task != null) {
             download_uri = task.getResult().getDownloadUrl();
@@ -218,15 +240,22 @@ public class SetupActivity extends AppCompatActivity {
         userMap.put("last", user_last);
         userMap.put("birthday", user_birthday);
         userMap.put("image", download_uri.toString());
+        userMap.put("type",user_type);
 
         firebaseFirestore.collection("Users").document(user_id).set(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(SetupActivity.this, "Datos almacenados con éxito!", Toast.LENGTH_LONG).show();
-                    Intent mainIntent = new Intent(SetupActivity.this, MainActivity.class);
-                    startActivity(mainIntent);
-                    finish();
+                    if (user_type.equals("usuario")){
+                        Intent setupIntent = new Intent(SetupActivity.this, MainActivity.class);
+                        startActivity(setupIntent);
+                        finish();
+                    }else{
+                        Intent setupIntent = new Intent(SetupActivity.this, MainActivityArtista.class);
+                        startActivity(setupIntent);
+                        finish();
+                    }
                 } else {
                     String error = task.getException().getMessage();
                     Toast.makeText(SetupActivity.this, "(FIRESTORE Error) : " + error, Toast.LENGTH_LONG).show();
@@ -275,4 +304,6 @@ public class SetupActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat(formatoDeFecha, Locale.US);
         etBirthday.setText(sdf.format(calendario.getTime()));
     }
+
+
 }

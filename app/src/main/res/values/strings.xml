@@ -7,10 +7,12 @@
     <string name="action_search_text">Buscar</string>
     <string name="action_setting_text">Configuraciones de la cuenta</string>
     <string name="action_logout_text">Cerrar sesión</string>
-    <string name="reg_btn_text">Crear una nueva cuenta</string>
-    <string name="reg_login_text">¿Ya tienes una cuenta?</string>
+
+    <string name="reg_btn_text">Siguiente</string>
+    <string name="reg_login_text">Cancelar</string>
     <string name="reg_pass_text">Contraseña...</string>
     <string name="reg_confirm_pass_text">Confirmar contraseña...</string>
+
     <string name="setup_name_hint">Nombre completo...</string>
     <string name="setup_save_btn">Guardar configuración de cuenta</string>
     <string name="setup_name_hint_text">Nombre...</string>

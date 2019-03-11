@@ -80,11 +80,8 @@ public class HomeFragment extends Fragment {
                     Boolean reachedBottom = !recyclerView.canScrollVertically(1);
 
                     if(reachedBottom){
-
                         loadMorePost();
-
                     }
-
                 }
             });
 
@@ -92,49 +89,29 @@ public class HomeFragment extends Fragment {
             firstQuery.addSnapshotListener(getActivity(), new EventListener<QuerySnapshot>() {
                 @Override
                 public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-
                     if (!documentSnapshots.isEmpty()) {
-
                         if (isFirstPageFirstLoad) {
-
                             lastVisible = documentSnapshots.getDocuments().get(documentSnapshots.size() - 1);
                             blog_list.clear();
-
                         }
-
                         for (DocumentChange doc : documentSnapshots.getDocumentChanges()) {
-
                             if (doc.getType() == DocumentChange.Type.ADDED) {
-
                                 String blogPostId = doc.getDocument().getId();
                                 BlogPost blogPost = doc.getDocument().toObject(BlogPost.class).withId(blogPostId);
-
                                 if (isFirstPageFirstLoad) {
-
                                     blog_list.add(blogPost);
-
                                 } else {
-
                                     blog_list.add(0, blogPost);
-
                                 }
-
-
                                 blogRecyclerAdapter.notifyDataSetChanged();
-
                             }
                         }
-
                         isFirstPageFirstLoad = false;
-
                     }
-
                 }
 
             });
-
         }
-
         // Inflate the layout for this fragment
         return view;
     }
@@ -151,29 +128,20 @@ public class HomeFragment extends Fragment {
             nextQuery.addSnapshotListener(getActivity(), new EventListener<QuerySnapshot>() {
                 @Override
                 public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-
                     if (!documentSnapshots.isEmpty()) {
-
                         lastVisible = documentSnapshots.getDocuments().get(documentSnapshots.size() - 1);
                         for (DocumentChange doc : documentSnapshots.getDocumentChanges()) {
-
                             if (doc.getType() == DocumentChange.Type.ADDED) {
-
                                 String blogPostId = doc.getDocument().getId();
                                 BlogPost blogPost = doc.getDocument().toObject(BlogPost.class).withId(blogPostId);
                                 blog_list.add(blogPost);
-
                                 blogRecyclerAdapter.notifyDataSetChanged();
                             }
-
                         }
                     }
-
                 }
             });
-
         }
-
     }
 
 }

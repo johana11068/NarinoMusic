@@ -17,4 +17,5 @@
     <color name="colorSecundaryText">#757575</color>
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorHint">#0CE4C6</color>
+    <color name="colorButtonSecundary">#CD44AE</color>
 </resources>

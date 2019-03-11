@@ -14,7 +14,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:paddingRight="20dp"
+        android:background="#d8000000">
 
         <ProgressBar
             android:id="@+id/login_progress"
@@ -65,7 +66,7 @@
                 android:ems="10"
                 android:textColor="@color/colorAccent"
                 android:textColorHint="@color/colorDivider"
-                android:hint="@string/reg_confirm_pass_text"
+                android:hint="@string/reg_pass_text"
                 android:inputType="textPassword"
                 android:textSize="18sp" />
         </android.support.design.widget.TextInputLayout>
@@ -89,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/colorButton"
+            android:backgroundTint="@color/colorButtonSecundary"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             android:text="@string/login_reg_btn_text"

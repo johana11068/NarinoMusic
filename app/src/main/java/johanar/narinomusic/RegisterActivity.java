@@ -34,10 +34,10 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
         //recibir valor de tipo de usuaio inten
         intenTypeUser = getIntent().getStringExtra("typeUser");
-        Toast.makeText(RegisterActivity.this, "tipo de usuario: "+intenTypeUser, Toast.LENGTH_LONG).show();
+        //intenTypeUser = getIntent().getExtras().getString("typeUser");
+
         mAuth = FirebaseAuth.getInstance();
 
         reg_email_field = findViewById(R.id.reg_email);
@@ -50,6 +50,8 @@ public class RegisterActivity extends AppCompatActivity {
         reg_login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent setupIntentLogin = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(setupIntentLogin);
                 finish();
             }
         });
@@ -57,7 +59,6 @@ public class RegisterActivity extends AppCompatActivity {
         reg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String email = reg_email_field.getText().toString();
                 String pass = reg_pass_field.getText().toString();
                 String confirm_pass = reg_confirm_pass_field.getText().toString();
@@ -68,12 +69,29 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
-                                    Intent setupIntent = new Intent(RegisterActivity.this, SetupActivity.class);
+                                    if (intenTypeUser != null){
+                                        if (intenTypeUser.equals("artista")){
+                                            Intent setupIntent = new Intent(RegisterActivity.this, SetupActivity.class);
+                                            setupIntent.putExtra("typeUser","artista");
+                                            startActivity(setupIntent);
+                                            Toast.makeText(RegisterActivity.this, "Artista musical registrado con éxito, por favor completa los siguientes campos", Toast.LENGTH_LONG).show();
+                                            finish();
+                                        }else{
+                                            Intent setupIntent = new Intent(RegisterActivity.this, SetupActivity.class);
+                                            setupIntent.putExtra("typeUser","usuario");
+                                            startActivity(setupIntent);
+                                            Toast.makeText(RegisterActivity.this, "Usuario registrado con éxito, por favor completa los siguientes campos", Toast.LENGTH_LONG).show();
+                                            finish();
+                                        }
+                                    }
+                                    /*Intent setupIntent = new Intent(RegisterActivity.this, SetupActivity.class);
                                     startActivity(setupIntent);
-                                    finish();
+                                    Toast.makeText(RegisterActivity.this, "Usuario registrado con éxito, por favor completa los siguientes campos", Toast.LENGTH_LONG).show();
+                                    finish();*/
                                 } else {
                                     String errorMessage = task.getException().getMessage();
-                                    Toast.makeText(RegisterActivity.this, "Error : " + errorMessage, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(RegisterActivity.this, "Error: " + errorMessage, Toast.LENGTH_LONG).show();
+                                    //falta traducir error de registro de usuario
                                 }
                                 reg_progress.setVisibility(View.INVISIBLE);
                             }
@@ -82,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(RegisterActivity.this, "Las contraseñas no coinciden, por favor vuelva a intentarlo", Toast.LENGTH_LONG).show();
                     }
                 }else{
-                    Toast.makeText(RegisterActivity.this,"Campos vacios, por favor ingrese su correo y una contraseña",Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterActivity.this,"Los campos están vacios, por favor ingrese su correo y contraseña",Toast.LENGTH_LONG).show();
                 }
             }
         });
