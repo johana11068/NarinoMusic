@@ -251,9 +251,9 @@ public class SetupActivity extends AppCompatActivity {
                         Intent setupIntent = new Intent(SetupActivity.this, MainActivity.class);
                         startActivity(setupIntent);
                         finish();
-                    }else{
-                        Intent setupIntent = new Intent(SetupActivity.this, MainActivityArtista.class);
-                        startActivity(setupIntent);
+                    }else if (user_type.equals("artista")){
+                        Intent setupIntentArtista = new Intent(SetupActivity.this, MainActivityArtista.class);
+                        startActivity(setupIntentArtista);
                         finish();
                     }
                 } else {
