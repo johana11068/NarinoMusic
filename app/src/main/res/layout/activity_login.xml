@@ -15,7 +15,7 @@
         android:orientation="vertical"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:background="#d8000000">
+        >
 
         <ProgressBar
             android:id="@+id/login_progress"
@@ -56,6 +56,8 @@
             android:id="@+id/id_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorAccent"
             android:layout_marginBottom="50dp">
 
             <EditText
@@ -98,6 +100,22 @@
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
+        <TextView
+            android:id="@+id/login_reset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_reset_pass"
+            android:gravity="center_horizontal"
+            android:textSize="16dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="JERG © 2019"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:textSize="16dp"/>
 
 
 

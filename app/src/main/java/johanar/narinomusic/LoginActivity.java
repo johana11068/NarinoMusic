@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -21,6 +23,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -28,11 +31,21 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText loginEmailText;
     private EditText loginPassText;
+    private TextView loginResetText;
     private Button loginBtn;
     private Button loginRegBtn;
 
@@ -55,6 +68,8 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.login_btn);
         loginRegBtn = findViewById(R.id.login_reg_btn);
         loginProgress = findViewById(R.id.login_progress);
+        loginResetText = findViewById(R.id.login_reset);
+
 /*
         //********************************************************************************************************
         <com.google.android.gms.common.SignInButton
@@ -66,17 +81,13 @@ public class LoginActivity extends AppCompatActivity {
 
         </com.google.android.gms.common.SignInButton>
 
-
         // Configure Google Sign In
         mGoogleBtn = (SignInButton) findViewById(R.id.googleBtn);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-
         mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
-
-
 
         mGoogleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +96,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });*/
         //********************************************************************************************************
+        loginResetText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent resetIntent = new Intent(LoginActivity.this, TypeUserActivity.class);
+                startActivity(resetIntent);
+            }
+        });
+
         loginRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,16 +112,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String loginEmail = loginEmailText.getText().toString();
                 final String loginPass = loginPassText.getText().toString();
-
                 if(!TextUtils.isEmpty(loginEmail) && !TextUtils.isEmpty(loginPass)){
                     loginProgress.setVisibility(View.VISIBLE);
-
                     mAuth.signInWithEmailAndPassword(loginEmail, loginPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -193,33 +209,46 @@ public class LoginActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(LoginActivity.this,"Digite su usuario y contraseña por favor",Toast.LENGTH_LONG).show();
                 }
-
-
             }
         });
-
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        final FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             sendToMain();
         }
     }
 
     private void sendToMain() {
-        Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(mainIntent);
-        finish();
+        String userId = mAuth.getCurrentUser().getUid();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Users").document(userId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()){
+                    if (documentSnapshot.contains("type")){
+                        String type_user = documentSnapshot.getString("type");
+                        if (type_user.equals("artista")){
+                            Intent mainIntentArtista = new Intent(LoginActivity.this, MainActivityArtista.class);
+                            startActivity(mainIntentArtista);
+                            finish();
+                        }else if(type_user.equals("usuario")){
+                            Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(mainIntent);
+                            finish();
+                        }
+                    }
+                }
+            }
+        });
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-
     }
 
     private void signIn() {

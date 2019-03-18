@@ -81,21 +81,13 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         firebaseFirestore.collection("Users").document(user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-
                 if(task.isSuccessful()){
-
                     String userName = task.getResult().getString("name");
                     String userImage = task.getResult().getString("image");
-
                     holder.setUserData(userName, userImage);
-
-
                 } else {
-
                     //Firebase Exception
-
                 }
-
             }
         });
 
@@ -104,73 +96,58 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             String dateString = DateFormat.format("MM/dd/yyyy", new Date(millisecond)).toString();
             holder.setTime(dateString);
         } catch (Exception e) {
-
             Toast.makeText(context, "Exception : " + e.getMessage(), Toast.LENGTH_SHORT).show();
-
         }
 
-        //Get Likes Count
-        firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").addSnapshotListener( new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-
-
-                if(!documentSnapshots.isEmpty()){
-
-                    int count = documentSnapshots.size();
-
-                    holder.updateLikesCount(count);
-
-                } else {
-
-                    holder.updateLikesCount(0);
-
-                }
-
+        if (blogPostId != null) {
+            if (!blogPostId.equals("")) {
+                //Get Likes Count
+                firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").addSnapshotListener( new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                        if(!documentSnapshots.isEmpty()){
+                            //
+                            if (!documentSnapshots.equals("")){
+                                int count = documentSnapshots.size();
+                                holder.updateLikesCount(count);
+                            }
+                        } else {
+                            holder.updateLikesCount(0);
+                        }
+                    }
+                });
             }
-        });
+        }
 
-
-        //Get Likes
-        firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").document(currentUserId).addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException e) {
-
-                if(documentSnapshot.exists()){
-
-                    holder.blogLikeBtn.setImageDrawable(context.getDrawable(R.mipmap.action_like_accent));
-
-                } else {
-
-                    holder.blogLikeBtn.setImageDrawable(context.getDrawable(R.mipmap.action_like_gray));
-
-                }
-
+        if (blogPostId != null){
+            if (!blogPostId.equals("")){
+                //Get Likes
+                firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").document(currentUserId).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException e) {
+                        if(documentSnapshot.exists()){
+                            holder.blogLikeBtn.setImageDrawable(context.getDrawable(R.mipmap.action_like_accent));
+                        } else {
+                            holder.blogLikeBtn.setImageDrawable(context.getDrawable(R.mipmap.action_like_gray));
+                        }
+                    }
+                });
             }
-        });
-
-        //Likes Feature
+        }
+        //Likes Feature 31 enero 704478786 - 1-3 dias jorge chica
         holder.blogLikeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").document(currentUserId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-
                         if(!task.getResult().exists()){
-
                             Map<String, Object> likesMap = new HashMap<>();
                             likesMap.put("timestamp", FieldValue.serverTimestamp());
-
                             firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").document(currentUserId).set(likesMap);
-
                         } else {
-
                             firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").document(currentUserId).delete();
-
                         }
-
                     }
                 });
             }
@@ -179,11 +156,9 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         holder.blogCommentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent commentIntent = new Intent(context, CommentsActivity.class);
                 commentIntent.putExtra("blog_post_id", blogPostId);
                 context.startActivity(commentIntent);
-
             }
         });
 
