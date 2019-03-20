@@ -7,13 +7,14 @@ import java.util.Date;
 
 public class BlogPost extends BlogPostId {
 
-    public String user_id, image_url, desc, image_thumb;
+    public String user_id, user_last,image_url, desc, image_thumb;
     public Date timestamp;
 
     public BlogPost() {}
 
-    public BlogPost(String user_id, String image_url, String desc, String image_thumb, Date timestamp) {
+    public BlogPost(String user_id, String user_last,String image_url, String desc, String image_thumb, Date timestamp) {
         this.user_id = user_id;
+        this.user_last = user_last;
         this.image_url = image_url;
         this.desc = desc;
         this.image_thumb = image_thumb;
@@ -27,6 +28,10 @@ public class BlogPost extends BlogPostId {
     public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
+
+    public String getUser_last() { return user_last; }
+
+    public void setUser_last(String user_last) { this.user_last = user_last; }
 
     public String getImage_url() {
         return image_url;

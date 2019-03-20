@@ -8,7 +8,7 @@
     <string name="action_setting_text">Configuraciones de la cuenta</string>
     <string name="action_logout_text">Cerrar sesión</string>
 
-    <string name="reg_btn_text">Siguiente</string>
+    <string name="reg_btn_text">Registrar</string>
     <string name="reg_login_text">Cancelar</string>
     <string name="reg_pass_text">Contraseña...</string>
     <string name="reg_confirm_pass_text">Confirmar contraseña...</string>
@@ -27,7 +27,7 @@
 
     <string name="new_post_btn_hint">Publicar</string>
     <string name="bottom_home_text">Home</string>
-    <string name="bottom_notification_text">Notificación</string>
+    <string name="bottom_notification_text">Notificaciones</string>
     <string name="bottom_ac_text">Cuenta</string>
     <string name="reg_artista">Artísta Musical</string>
     <string name="reg_usuario">Usuario</string>
@@ -36,4 +36,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="setup_date_hint_text">Fecha de nacimiento</string>
     <string name="login_reset_pass">Restablecer contraseña</string>
+
+    <string name="account_btn_text">Actualizar</string>
 </resources>

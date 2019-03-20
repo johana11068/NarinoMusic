@@ -60,7 +60,7 @@ public class SetupActivity extends AppCompatActivity {
     private boolean isChanged = false;
 
     private EditText setupName, setupLast, setupDate;
-    private Button setupBtn,setupCancelBtn;
+    private Button setupBtn;
     private ProgressBar setupProgress;
     private TextView setupType;
 
@@ -111,7 +111,7 @@ public class SetupActivity extends AppCompatActivity {
         setupDate = findViewById(R.id.setup_date);
         setupType = findViewById(R.id.setup_type);
         setupBtn = findViewById(R.id.setup_btn);
-        setupCancelBtn = findViewById(R.id.setup_cancel_btn);
+        //setupCancelBtn = findViewById(R.id.setup_cancel_btn);
         setupProgress = findViewById(R.id.setup_progress);
 
         setupProgress.setVisibility(View.VISIBLE);
@@ -149,7 +149,7 @@ public class SetupActivity extends AppCompatActivity {
             }
         });
 
-        setupCancelBtn.setOnClickListener(new View.OnClickListener() {
+        /*setupCancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // falta metodo para borrar o eliminar usuario
@@ -157,7 +157,7 @@ public class SetupActivity extends AppCompatActivity {
                 startActivity(setupIntentLogin);
                 finish();
             }
-        });
+        });*/
 
 
         setupBtn.setOnClickListener(new View.OnClickListener() {
@@ -289,9 +289,7 @@ public class SetupActivity extends AppCompatActivity {
 
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
         @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear,
-                              int dayOfMonth) {
-            // TODO Auto-generated method stub
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
             calendario.set(Calendar.YEAR, year);
             calendario.set(Calendar.MONTH, monthOfYear);
             calendario.set(Calendar.DAY_OF_MONTH, dayOfMonth);

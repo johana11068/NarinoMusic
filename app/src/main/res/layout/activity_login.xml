@@ -106,8 +106,8 @@
             android:layout_height="wrap_content"
             android:text="@string/login_reset_pass"
             android:gravity="center_horizontal"
-            android:textSize="16dp"
-            android:layout_marginTop="10dp"/>
+            android:textSize="14dp"
+            android:layout_marginTop="16dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -115,7 +115,7 @@
             android:text="JERG © 2019"
             android:gravity="center_horizontal"
             android:layout_marginTop="30dp"
-            android:textSize="16dp"/>
+            android:textSize="10dp"/>
 
 
 

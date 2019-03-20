@@ -109,22 +109,6 @@
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"/>
 
-        <Button
-            android:id="@+id/setup_cancel_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:backgroundTint="@color/colorButton"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:text="@string/reg_login_text"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:onClick="cancel" />
-
-
-
     </LinearLayout>
 
 

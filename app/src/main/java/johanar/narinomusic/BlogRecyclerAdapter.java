@@ -46,14 +46,11 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
     private FirebaseAuth firebaseAuth;
 
     public BlogRecyclerAdapter(List<BlogPost> blog_list){
-
         this.blog_list = blog_list;
-
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.blog_list_item, parent, false);
         context = parent.getContext();
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -83,8 +80,9 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
                     String userName = task.getResult().getString("name");
+                    String userLast = task.getResult().getString("last");
                     String userImage = task.getResult().getString("image");
-                    holder.setUserData(userName, userImage);
+                    holder.setUserData(userName, userLast, userImage);
                 } else {
                     //Firebase Exception
                 }
@@ -99,7 +97,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             Toast.makeText(context, "Exception : " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
-        if (blogPostId != null) {
+        /*if (blogPostId != null) {
             if (!blogPostId.equals("")) {
                 //Get Likes Count
                 firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").addSnapshotListener( new EventListener<QuerySnapshot>() {
@@ -160,7 +158,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
                 commentIntent.putExtra("blog_post_id", blogPostId);
                 context.startActivity(commentIntent);
             }
-        });
+        });*/
 
     }
 
@@ -178,7 +176,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         private ImageView blogImageView;
         private TextView blogDate;
 
-        private TextView blogUserName;
+        private TextView blogUserName, blogUserLast;
         private CircleImageView blogUserImage;
 
         private ImageView blogLikeBtn;
@@ -191,8 +189,8 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             super(itemView);
             mView = itemView;
 
-            blogLikeBtn = mView.findViewById(R.id.blog_like_btn);
-            blogCommentBtn = mView.findViewById(R.id.blog_comment_icon);
+            //blogLikeBtn = mView.findViewById(R.id.blog_like_btn);
+            //blogCommentBtn = mView.findViewById(R.id.blog_comment_icon);
 
         }
 
@@ -223,12 +221,14 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
         }
 
-        public void setUserData(String name, String image){
+        public void setUserData(String name, String last, String image){
 
             blogUserImage = mView.findViewById(R.id.blog_user_image);
             blogUserName = mView.findViewById(R.id.blog_user_name);
+            blogUserLast = mView.findViewById(R.id.blog_user_last);
 
             blogUserName.setText(name);
+            blogUserLast.setText(last);
 
             RequestOptions placeholderOption = new RequestOptions();
             placeholderOption.placeholder(R.drawable.profile_placeholder);
@@ -239,7 +239,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
         public void updateLikesCount(int count){
 
-            blogLikeCount = mView.findViewById(R.id.blog_like_count);
+            //blogLikeCount = mView.findViewById(R.id.blog_like_count);
             blogLikeCount.setText(count + " Likes");
 
         }
