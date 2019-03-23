@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">NariñoMusic</string>
-    <string name="pass_hint">Contraseña...</string>
-    <string name="email_hint">Correo electrónico...</string>
+    <string name="pass_hint">Contraseña</string>
+    <string name="email_hint">Correo eléctronico</string>
     <string name="login_btn_text">Iniciar Sesión</string>
     <string name="login_reg_btn_text">¿Necesita una nueva cuenta?</string>
     <string name="action_search_text">Buscar</string>
@@ -10,13 +10,13 @@
 
     <string name="reg_btn_text">Registrar</string>
     <string name="reg_login_text">Cancelar</string>
-    <string name="reg_pass_text">Contraseña...</string>
-    <string name="reg_confirm_pass_text">Confirmar contraseña...</string>
+    <string name="reg_pass_text">Contraseña</string>
+    <string name="reg_confirm_pass_text">Confirmar contraseña</string>
 
-    <string name="setup_name_hint">Nombre completo...</string>
+    <string name="setup_name_hint">Nombre completo</string>
     <string name="setup_save_btn">Guardar configuración de cuenta</string>
-    <string name="setup_name_hint_text">Nombre...</string>
-    <string name="setup_last_hint_text">Apellido...</string>
+    <string name="setup_name_hint_text">Nombre</string>
+    <string name="setup_last_hint_text">Apellido</string>
     <string name="setup_btn_name_text">Guardar configuración de cuenta</string>
 
     <string name="post_desc_hint">Nombre de la agrupación</string>
@@ -35,7 +35,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="setup_date_hint_text">Fecha de nacimiento</string>
-    <string name="login_reset_pass">Restablecer contraseña</string>
+    <string name="login_reset_pass">¿Olvidaste tu contraseña?</string>
 
     <string name="account_btn_text">Actualizar</string>
+    <string name="reset_btn_text">Restablecer contraseña</string>
 </resources>

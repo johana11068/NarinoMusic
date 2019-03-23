@@ -14,8 +14,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        >
+        android:paddingRight="20dp">
 
         <ProgressBar
             android:id="@+id/login_progress"
@@ -23,7 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:indeterminate="true"
-            android:visibility="invisible"/>
+            android:layout_marginTop="10dp"
+            android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/regPageLogo"
@@ -100,21 +100,25 @@
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
-        <TextView
+        <Button
             android:id="@+id/login_reset"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/login_reset_pass"
-            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:background="@null"
             android:textSize="14dp"
-            android:layout_marginTop="16dp"/>
+            android:textColor="@color/likeBtnGray"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="JERG © 2019"
             android:gravity="center_horizontal"
-            android:layout_marginTop="30dp"
             android:textSize="10dp"/>
 
 
