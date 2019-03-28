@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CardViewActivity"
+    android:orientation="vertical"
+    android:background="@drawable/banner2">
+
+    <!--videoclip-->
+    <ImageView
+        android:id="@+id/cv_image"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="nombre artista"
+            android:drawableLeft="@drawable/ic_person_black_24dp"
+            android:drawablePadding="15dp"
+            android:drawableTint="@color/colorAccent"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="Nombre agrupacion"
+            android:drawableLeft="@drawable/ic_mic_black_24dp"
+            android:drawablePadding="15dp"
+            android:drawableTint="@color/colorAccent"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="Genero musical"
+            android:drawableLeft="@drawable/ic_music_note_black_24dp"        android:drawablePadding="15dp"
+            android:drawableTint="@color/colorAccent"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="Lugar de residencia"
+            android:drawableLeft="@drawable/ic_location_black_24dp"        android:drawablePadding="15dp"
+            android:drawableTint="@color/colorAccent"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="Rango de costo"
+            android:drawableLeft="@drawable/ic_money_black_24dp"        android:drawablePadding="15dp"
+            android:drawableTint="@color/colorAccent"
+            android:textSize="18sp"/>
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorButton"
+            android:padding="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/btn_reservation"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -39,4 +39,5 @@
 
     <string name="account_btn_text">Actualizar</string>
     <string name="reset_btn_text">Restablecer contraseña</string>
+    <string name="btn_reservation">Reservar Servicio</string>
 </resources>
